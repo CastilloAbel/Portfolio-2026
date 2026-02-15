@@ -18,9 +18,9 @@ const es = {
   },
   about: {
     title: 'Sobre mí',
-    p1: 'Administrador de Infraestructura con enfoque en virtualización empresarial (Proxmox + Ceph), redes de alto rendimiento (MikroTik) y orquestación de servicios contenerizados con Docker.',
-    p2: 'Mi filosofía se centra en construir sistemas automatizados, resilientes y escalables. Trabajo en entornos híbridos Linux/Windows, implementando soluciones de alta disponibilidad, backup empresarial y arquitecturas que minimizan la intervención manual.',
-    p3: 'No hago soporte técnico: diseño, construyo y automatizo infraestructura.',
+    p1: 'Administrador de Infraestructura con enfoque en virtualización empresarial (Proxmox + Ceph), redes de alto rendimiento (MikroTik) y orquestación de servicios contenerizados con Docker. Me interesa entender cómo funcionan los sistemas desde su base y cómo optimizarlos para que sean más eficientes y estables.',
+    p2: 'Mi filosofía se centra en construir sistemas automatizados, resilientes y escalables. Trabajo en entornos híbridos Linux/Windows, implementando soluciones de alta disponibilidad y backup empresarial, siempre buscando reducir la intervención manual mediante mejoras estructurales.',
+    p3: 'Se dice que cuando un sistema necesita soporte, es porque la infraestructura falla. Por eso me interesa trabajar en la base del problema: mejorar la arquitectura, automatizar procesos y construir sistemas que funcionen de forma estable incluso ante fallos inesperados.',
   },
   stack: {
     title: 'Stack Tecnológico',

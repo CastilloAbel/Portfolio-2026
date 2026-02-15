@@ -19,7 +19,7 @@ export default function Footer() {
 
         <div className="flex items-center gap-3">
           <a
-            href="https://linkedin.com/in/"
+            href="https://linkedin.com/in/castillo-abel"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-lg p-2 text-surface-400 transition-colors hover:text-primary-500"
@@ -28,7 +28,7 @@ export default function Footer() {
             <Linkedin size={18} />
           </a>
           <a
-            href="https://github.com/"
+            href="https://github.com/CastilloAbel"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-lg p-2 text-surface-400 transition-colors hover:text-primary-500"

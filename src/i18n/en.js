@@ -18,9 +18,9 @@ const en = {
   },
   about: {
     title: 'About Me',
-    p1: 'Infrastructure Administrator focused on enterprise virtualization (Proxmox + Ceph), high-performance networking (MikroTik) and containerized service orchestration with Docker.',
-    p2: 'My philosophy centers on building automated, resilient and scalable systems. I work across hybrid Linux/Windows environments, implementing high-availability solutions, enterprise backup and architectures that minimize manual intervention.',
-    p3: "I don't do tech support: I design, build and automate infrastructure.",
+    p1: "Infrastructure Administrator focused on enterprise virtualization (Proxmox + Ceph), high-performance networking (MikroTik) and containerized service orchestration with Docker. I'm interested in understanding how systems work from the ground up and how to optimize them for greater efficiency and stability.",
+    p2: 'My philosophy centers on building automated, resilient and scalable systems. I work across hybrid Linux/Windows environments, implementing high-availability solutions, enterprise backup and architectures that minimize manual intervention, always seeking to reduce manual intervention through structural improvements.',
+    p3: "It is said that when a system needs support, it is because the infrastructure fails. That's why I'm interested in working on the basis of the problem: improving the architecture, automating processes, and building systems that work stably even in the face of unexpected failures.",
   },
   stack: {
     title: 'Tech Stack',
