@@ -175,7 +175,6 @@ export const experience = {
         'Migración de servicios críticos a entorno HA con integración Active Directory.',
         'Automatización integral de backups y monitoreo centralizado.',
         'Desarrollo de sistema interno de control de versiones CNC.',
-        'Capacitación interna a equipos técnicos sobre uso de nuevas herramientas, buenas prácticas de almacenamiento, control de versiones y procedimientos de recuperación ante desastres.'
       ]
     },
 
@@ -204,7 +203,6 @@ export const experience = {
         'Migrated critical services to HA environment with Active Directory integration.',
         'Implemented full backup automation and centralized monitoring.',
         'Developed internal CNC version control system.',
-        'Delivered internal technical training sessions on infrastructure modernization, storage best practices, version control and disaster recovery procedures.'
       ]
     },
 
