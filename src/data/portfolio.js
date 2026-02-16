@@ -5,228 +5,219 @@ import {
   Terminal,
   Github,
   Database,
-  Shield,
   Monitor,
   HardDrive,
-  Cpu,
-  Layers,
+  Code,
+  Braces,
+  AppWindow,
+  UserKey,
+  Atom
 } from 'lucide-react';
 
-export const techStack = [
-  { name: 'Linux', icon: Terminal, color: '#FCC624' },
-  { name: 'Proxmox', icon: Server, color: '#E57000' },
-  { name: 'Ceph', icon: HardDrive, color: '#EF3F36' },
-  { name: 'Docker', icon: Container, color: '#2496ED' },
-  { name: 'MikroTik', icon: Network, color: '#293239' },
-  { name: 'Bash', icon: Terminal, color: '#4EAA25' },
-  { name: 'GitHub', icon: Github, color: '#181717' },
-  { name: 'MariaDB', icon: Database, color: '#003545' },
-  { name: 'PostgreSQL', icon: Database, color: '#4169E1' },
-  { name: 'Windows Server', icon: Monitor, color: '#0078D6' },
-  { name: 'Active Directory', icon: Shield, color: '#0078D6' },
-];
+export const techStack = {
+  infrastructure: [
+    { name: 'Linux', icon: AppWindow, color: '#FCC624' },
+    { name: 'Proxmox', icon: Server, color: '#E57000' },
+    { name: 'Ceph', icon: HardDrive, color: '#EF3F36' },
+    { name: 'Docker', icon: Container, color: '#2496ED' },
+    { name: 'MikroTik', icon: Network, color: '#293239' },
+    { name: 'Windows Server', icon: Monitor, color: '#0078D6' },
+    { name: 'Active Directory', icon: UserKey, color: '#0078D6' },
+    { name: 'MariaDB', icon: Database, color: '#003545' },
+    { name: 'PostgreSQL', icon: Database, color: '#4169E1' },
+    { name: 'GitHub', icon: Github, color: '#181717' },
+  ],
+  development: [
+    { name: 'Python', icon: Code, color: '#3776AB' },
+    { name: 'JavaScript', icon: Braces, color: '#F7DF1E' },
+    { name: 'React', icon: Atom, color: '#61DAFB' },
+    { name: 'Bash', icon: Terminal, color: '#4EAA25' },
+  ],
+};
 
 export const projects = {
   es: [
     {
       title: 'Cluster Proxmox + Ceph HA',
       problem:
-        'Infraestructura de virtualización sin redundancia, con riesgo de pérdida de datos y downtime ante fallos de hardware.',
+        'Infraestructura sin alta disponibilidad y almacenamiento centralizado, con riesgo de downtime y corrupción de datos.',
       solution:
-        'Implementación de clúster Proxmox VE de 3 nodos con almacenamiento distribuido Ceph (RBD + CephFS), migración en vivo y fencing automático.',
+        'Diseño e implementación de clúster Proxmox VE con almacenamiento distribuido Ceph (RBD para discos de VM/LXC, CephFS para datos de usuarios y bases de datos). Configuración de HA y migración en vivo.',
       result:
-        'Alta disponibilidad real con cero downtime planificado. Recuperación automática ante fallo de nodo en menos de 60 segundos.',
+        'Alta disponibilidad real, tolerancia a fallos de nodo y mejora significativa en rendimiento y estabilidad del almacenamiento.',
       tech: ['Proxmox VE', 'Ceph', 'RBD', 'CephFS', 'Linux'],
     },
     {
-      title: 'Infraestructura Docker Swarm',
+      title: 'Modernización de Servicios Core (GLPI, OpenFire, UniFi, Traefik)',
       problem:
-        'Servicios desplegados manualmente en servidores individuales, sin orquestación ni escalabilidad.',
+        'Servicios críticos desplegados en contenedores Docker aislados, sin integración con HA ni gestión centralizada de certificados.',
       solution:
-        'Diseño e implementación de clúster Docker Swarm con redes overlay, volúmenes persistentes y despliegue declarativo via docker-compose.',
+        'Migración de servicios a contenedores LXC dentro de Proxmox con HA. Migración de bases de datos, integración con Active Directory, implementación de Traefik como proxy inverso con wildcard certificate y unificación de infraestructura.',
       result:
-        'Despliegue automatizado de servicios con balanceo de carga nativo y rolling updates sin interrupción.',
-      tech: ['Docker', 'Docker Swarm', 'Linux', 'Bash'],
+        'Mejora en tiempos de respuesta, mayor resiliencia ante fallos y centralización segura de accesos mediante proxy inverso.',
+      tech: ['Proxmox', 'LXC', 'MariaDB', 'Active Directory', 'Traefik', 'Linux'],
     },
     {
-      title: 'Implementación UniFi Controller',
+      title: 'Sistema de Control de Versiones CNC',
       problem:
-        'Gestión descentralizada de puntos de acceso WiFi sin visibilidad ni control unificado de la red inalámbrica.',
+        'Falta de control centralizado de versiones para programas CNC, generando múltiples copias manuales sin trazabilidad.',
       solution:
-        'Despliegue de UniFi Controller contenerizado sobre Docker, con integración VLAN y portal cautivo para invitados.',
+        'Desarrollo de sistema automatizado con script en Python que detecta cambios en carpeta Samba y realiza commit automático a repositorio GitHub. Interfaz web en React + Tailwind para visualizar estructura y versiones.',
       result:
-        'Control centralizado de toda la infraestructura WiFi con monitoreo en tiempo real y segmentación de tráfico.',
-      tech: ['Docker', 'UniFi', 'VLAN', 'MikroTik'],
+        'Trazabilidad completa de versiones CNC, eliminación de duplicados y mejora en control de cambios por parte de técnicos no desarrolladores.',
+      tech: ['Python', 'GitHub API', 'React', 'Tailwind', 'Samba', 'Linux'],
     },
     {
-      title: 'Servidor OpenFire',
+      title: 'Automatización Integral de Backups',
       problem:
-        'Necesidad de comunicación interna instantánea sin depender de servicios cloud externos.',
+        'Backups manuales e inconsistentes con riesgo de pérdida de información crítica.',
       solution:
-        'Implementación de servidor XMPP OpenFire con integración a Active Directory para autenticación centralizada.',
+        'Implementación de Proxmox Backup Server con políticas automatizadas para VMs, LXC, hosts Proxmox y PCs críticas (incluyendo imágenes de disco). Configuración de retención y verificación de integridad.',
       result:
-        'Sistema de mensajería corporativa on-premise con cifrado y auditoría de comunicaciones.',
-      tech: ['OpenFire', 'Active Directory', 'Docker', 'Linux'],
-    },
-    {
-      title: 'Sistema GLPI',
-      problem:
-        'Sin sistema formal de gestión de activos TI ni seguimiento de incidencias.',
-      solution:
-        'Despliegue de GLPI con inventario automatizado via agentes, gestión de tickets y base de conocimiento.',
-      result:
-        'Visibilidad completa del parque tecnológico con trazabilidad de incidencias y métricas de gestión.',
-      tech: ['GLPI', 'Docker', 'MariaDB', 'Linux'],
-    },
-    {
-      title: 'Automatización de Backups',
-      problem:
-        'Backups manuales inconsistentes con riesgo de pérdida de datos críticos.',
-      solution:
-        'Implementación de Proxmox Backup Server con políticas automatizadas, retención configurable y verificación de integridad.',
-      result:
-        'Backup automatizado diario con deduplicación, restauración verificada y alertas proactivas.',
+        'Backups automáticos diarios con deduplicación, restauración verificada y reducción significativa del riesgo operativo.',
       tech: ['Proxmox Backup Server', 'Bash', 'Linux', 'Ceph'],
     },
     {
-      title: 'File-Gateway Samba',
+      title: 'Servidor de Archivos Empresarial con CephFS + Samba',
       problem:
-        'Almacenamiento de archivos compartidos sin rendimiento ni integración con dominio.',
+        'Servidor de archivos Windows con problemas de rendimiento, corrupción de archivos y alto consumo de recursos.',
       solution:
-        'Implementación de file-gateway con iSCSI sobre Ceph como backend y Samba integrado a Active Directory.',
+        'Migración a servidor Debian con Samba utilizando CephFS como backend distribuido. Integración con Active Directory para control de permisos.',
       result:
-        'Almacenamiento empresarial de alto rendimiento con permisos granulares basados en grupos de AD.',
-      tech: ['Samba', 'iSCSI', 'Ceph', 'Active Directory', 'Linux'],
+        'Mejora en rendimiento, reducción de consumo de recursos y eliminación de costos de licencias Windows Server.',
+      tech: ['Debian', 'Samba', 'CephFS', 'Active Directory', 'Linux'],
     },
+    {
+      title: 'Monitoreo Centralizado con Uptime Kuma',
+      problem:
+        'Falta de visibilidad en tiempo real del estado de servicios, red y dispositivos críticos.',
+      solution:
+        'Implementación de Uptime Kuma en contenedor LXC para monitorear servidores, routers, APs, enlaces WAN y cámaras. Integración de alertas vía Discord y correo electrónico.',
+      result:
+        'Supervisión proactiva de infraestructura con notificaciones automáticas ante fallos.',
+      tech: ['Uptime Kuma', 'Proxmox', 'Linux'],
+    }
   ],
   en: [
     {
       title: 'Proxmox + Ceph HA Cluster',
       problem:
-        'Virtualization infrastructure without redundancy, at risk of data loss and downtime from hardware failures.',
+        'Infrastructure without high availability or centralized storage, exposing the environment to downtime and data corruption risks.',
       solution:
-        'Implementation of a 3-node Proxmox VE cluster with Ceph distributed storage (RBD + CephFS), live migration and automatic fencing.',
+        'Design and implementation of a Proxmox VE cluster with distributed Ceph storage (RBD for VM/LXC disks and CephFS for user data and databases). HA configuration and live migration setup.',
       result:
-        'Real high availability with zero planned downtime. Automatic recovery from node failure in under 60 seconds.',
+        'True high availability, node failure tolerance and significant improvement in storage performance and stability.',
       tech: ['Proxmox VE', 'Ceph', 'RBD', 'CephFS', 'Linux'],
     },
     {
-      title: 'Docker Swarm Infrastructure',
+      title: 'Core Services Modernization (GLPI, OpenFire, UniFi, Traefik)',
       problem:
-        'Services deployed manually on individual servers, without orchestration or scalability.',
+        'Critical services deployed in isolated Docker containers without HA integration or centralized certificate management.',
       solution:
-        'Design and implementation of Docker Swarm cluster with overlay networks, persistent volumes and declarative deployment via docker-compose.',
+        'Migration of services to LXC containers within Proxmox HA cluster. Database migration, Active Directory integration, Traefik reverse proxy implementation with wildcard certificate and infrastructure unification.',
       result:
-        'Automated service deployment with native load balancing and rolling updates with zero downtime.',
-      tech: ['Docker', 'Docker Swarm', 'Linux', 'Bash'],
+        'Improved response times, enhanced resilience and secure centralized access management through reverse proxy.',
+      tech: ['Proxmox', 'LXC', 'MariaDB', 'Active Directory', 'Traefik', 'Linux'],
     },
     {
-      title: 'UniFi Controller Deployment',
+      title: 'CNC Version Control System',
       problem:
-        'Decentralized access point management without visibility or unified control of the wireless network.',
+        'Lack of centralized version control for CNC programs, resulting in duplicated files and no traceability.',
       solution:
-        'Containerized UniFi Controller deployment on Docker with VLAN integration and captive portal for guests.',
+        'Development of automated Python-based system detecting file changes in Samba share and committing them to GitHub repository. React + Tailwind web interface for repository structure and version visualization.',
       result:
-        'Centralized control of all WiFi infrastructure with real-time monitoring and traffic segmentation.',
-      tech: ['Docker', 'UniFi', 'VLAN', 'MikroTik'],
+        'Full version traceability, elimination of duplicate files and improved change control for non-developer technicians.',
+      tech: ['Python', 'GitHub API', 'React', 'Tailwind', 'Samba', 'Linux'],
     },
     {
-      title: 'OpenFire Server',
+      title: 'Enterprise Backup Automation',
       problem:
-        'Need for internal instant communication without relying on external cloud services.',
+        'Inconsistent manual backups with high risk of critical data loss.',
       solution:
-        'XMPP OpenFire server implementation with Active Directory integration for centralized authentication.',
+        'Implementation of Proxmox Backup Server with automated policies for VMs, LXC containers, Proxmox hosts and critical workstations (including disk images). Retention and integrity verification configured.',
       result:
-        'On-premise corporate messaging system with encryption and communication auditing.',
-      tech: ['OpenFire', 'Active Directory', 'Docker', 'Linux'],
-    },
-    {
-      title: 'GLPI System',
-      problem:
-        'No formal IT asset management system or incident tracking in place.',
-      solution:
-        'GLPI deployment with automated inventory via agents, ticket management and knowledge base.',
-      result:
-        'Complete visibility of technology assets with incident traceability and management metrics.',
-      tech: ['GLPI', 'Docker', 'MariaDB', 'Linux'],
-    },
-    {
-      title: 'Backup Automation',
-      problem:
-        'Inconsistent manual backups with risk of critical data loss.',
-      solution:
-        'Proxmox Backup Server implementation with automated policies, configurable retention and integrity verification.',
-      result:
-        'Automated daily backup with deduplication, verified restoration and proactive alerts.',
+        'Automated daily backups with deduplication, verified restore capability and significant reduction of operational risk.',
       tech: ['Proxmox Backup Server', 'Bash', 'Linux', 'Ceph'],
     },
     {
-      title: 'Samba File-Gateway',
+      title: 'Enterprise File Server with CephFS + Samba',
       problem:
-        'Shared file storage without performance or domain integration.',
+        'Windows file server with performance issues, file corruption and high resource consumption.',
       solution:
-        'File-gateway implementation with iSCSI over Ceph as backend and Samba integrated with Active Directory.',
+        'Migration to Debian server using Samba with CephFS distributed backend. Active Directory integration for granular permissions.',
       result:
-        'High-performance enterprise storage with granular permissions based on AD groups.',
-      tech: ['Samba', 'iSCSI', 'Ceph', 'Active Directory', 'Linux'],
+        'Improved performance, reduced resource usage and elimination of Windows Server licensing costs.',
+      tech: ['Debian', 'Samba', 'CephFS', 'Active Directory', 'Linux'],
     },
-  ],
+    {
+      title: 'Centralized Monitoring with Uptime Kuma',
+      problem:
+        'Lack of real-time visibility into infrastructure services and network devices.',
+      solution:
+        'Deployment of Uptime Kuma in LXC container to monitor servers, routers, APs, WAN links and cameras. Alerting integration via Discord and email.',
+      result:
+        'Proactive infrastructure monitoring with automated failure notifications.',
+      tech: ['Uptime Kuma', 'Proxmox', 'Linux'],
+    }
+  ]
 };
 
 export const experience = {
   es: [
     {
-      role: 'Administrador de Infraestructura',
-      company: 'Empresa actual',
-      period: '2022 — Presente',
+      role: 'Infrastructure & Systems Engineer',
+      company: 'Empresa Metalúrgica',
+      period: '2024 — Actualidad',
       description:
-        'Administración de clúster Proxmox VE con Ceph, orquestación Docker Swarm, gestión avanzada de redes MikroTik y automatización de procesos con Bash. Responsable de la arquitectura, resiliencia y continuidad operativa de toda la infraestructura.',
+        'Responsable de la modernización y administración de la infraestructura tecnológica, incluyendo virtualización, almacenamiento distribuido, backups, servicios internos y automatización.',
       highlights: [
-        'Clúster Proxmox + Ceph con alta disponibilidad',
-        'Orquestación de +20 servicios contenerizados',
-        'Automatización de backups con PBS',
-        'Redes MikroTik: VLAN, failover, firewall',
-      ],
+        'Diseño e implementación de clúster Proxmox + Ceph con alta disponibilidad.',
+        'Migración de servicios críticos a entorno HA con integración Active Directory.',
+        'Automatización integral de backups y monitoreo centralizado.',
+        'Desarrollo de sistema interno de control de versiones CNC.',
+        'Capacitación interna a equipos técnicos sobre uso de nuevas herramientas, buenas prácticas de almacenamiento, control de versiones y procedimientos de recuperación ante desastres.'
+      ]
     },
+
     {
-      role: 'Administrador de Sistemas',
-      company: 'Empresa anterior',
-      period: '2020 — 2022',
+      role: 'IT Systems Intern',
+      company: 'Universidad Nacional de Cordoba',
+      period: '2023 — 2024',
       description:
-        'Gestión de servidores Linux y Windows Server, implementación de Active Directory, migraciones de bases de datos y despliegue de servicios empresariales.',
+        'Rol formativo orientado al soporte operativo y la administración básica de infraestructura tecnológica en un entorno educativo. Participé en tareas de red, mantenimiento de sistemas y concientización en seguridad informática, desarrollando una base sólida en operación de entornos IT institucionales.',
       highlights: [
-        'Integración Linux + Active Directory',
-        'Migración MariaDB y PostgreSQL',
-        'Implementación GLPI y OpenFire',
-        'File-gateway con Samba + iSCSI',
+        'Soporte y configuración básica de infraestructura de red en entorno educativo.',
+        'Implementación de buenas prácticas de seguridad informática mediante capacitaciones a usuarios.',
+        'Participación en mantenimiento operativo de entornos tecnológicos institucionales.',
       ],
     },
   ],
   en: [
     {
-      role: 'Infrastructure Administrator',
-      company: 'Current Company',
-      period: '2022 — Present',
+      role: 'Infrastructure & Systems Engineer',
+      company: 'Metallurgical Company',
+      period: '2024 — Present',
       description:
-        'Management of Proxmox VE cluster with Ceph, Docker Swarm orchestration, advanced MikroTik network management and process automation with Bash. Responsible for the architecture, resilience and operational continuity of the entire infrastructure.',
+        'Responsible for modernization and administration of core infrastructure, including virtualization, distributed storage, backups, internal services and automation.',
       highlights: [
-        'Proxmox + Ceph cluster with high availability',
-        'Orchestration of 20+ containerized services',
-        'Backup automation with PBS',
-        'MikroTik networking: VLAN, failover, firewall',
-      ],
+        'Designed and implemented Proxmox + Ceph HA cluster.',
+        'Migrated critical services to HA environment with Active Directory integration.',
+        'Implemented full backup automation and centralized monitoring.',
+        'Developed internal CNC version control system.',
+        'Delivered internal technical training sessions on infrastructure modernization, storage best practices, version control and disaster recovery procedures.'
+      ]
     },
+
     {
-      role: 'Systems Administrator',
-      company: 'Previous Company',
-      period: '2020 — 2022',
+      role: 'IT Systems Intern',
+      company: 'National University of Córdoba',
+      period: '2023 — 2024',
       description:
-        'Linux and Windows Server management, Active Directory implementation, database migrations and enterprise service deployment.',
+        'Entry-level role focused on operational IT support and foundational infrastructure administration within an educational institution. Gained hands-on experience in network tasks, system maintenance, and cybersecurity awareness initiatives, building a strong technical foundation in institutional IT environments.',
       highlights: [
-        'Linux + Active Directory integration',
-        'MariaDB and PostgreSQL migration',
-        'GLPI and OpenFire deployment',
-        'File-gateway with Samba + iSCSI',
+        'Assisted in basic network infrastructure configuration within an educational environment.',
+        'Delivered security awareness training and promoted cybersecurity best practices among users.',
+        'Contributed to the operational maintenance of institutional IT systems.',
       ],
     },
   ],

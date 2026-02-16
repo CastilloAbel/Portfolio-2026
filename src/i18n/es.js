@@ -10,7 +10,7 @@ const es = {
   hero: {
     greeting: 'Hola, soy',
     name: 'Abel',
-    title: 'Infrastructure & DevOps Engineer',
+    title: 'Infrastructure & Automation Engineer',
     description:
       'Diseño, implemento y automatizo infraestructuras resilientes. Especializado en virtualización, contenedores y redes empresariales.',
     cta: 'Ver Proyectos',

@@ -61,23 +61,16 @@ export default function Experience() {
                 </p>
 
                 {/* Highlights */}
-                <ul
-                  className={`mt-4 space-y-1.5 ${
-                    i % 2 === 0 ? 'md:text-right' : ''
-                  }`}
-                >
+                <ul className="mt-4 space-y-1.5">
                   {job.highlights.map((h, j) => (
                     <li
                       key={j}
-                      className="flex items-center gap-2 text-sm text-surface-600 dark:text-surface-300"
-                      style={
-                        i % 2 === 0
-                          ? { justifyContent: 'flex-start' }
-                          : undefined
-                      }
+                      className={`flex items-center gap-2 text-sm text-surface-600 dark:text-surface-300 ${
+                        i % 2 === 0 ? 'flex-row-reverse md:justify-end' : ''
+                      }`}
                     >
                       <span className="h-1 w-1 shrink-0 rounded-full bg-primary-500" />
-                      {h}
+                      <span>{h}</span>
                     </li>
                   ))}
                 </ul>

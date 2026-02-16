@@ -97,7 +97,7 @@ export default function Hero() {
             className="mt-12 flex items-center gap-4"
           >
             <a
-              href="https://linkedin.com/in/"
+              href="https://linkedin.com/in/castillo-abel"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-xl p-2.5 text-surface-400 transition-colors hover:bg-primary-50 hover:text-primary-600 dark:hover:bg-surface-800 dark:hover:text-primary-400"
@@ -106,7 +106,7 @@ export default function Hero() {
               <Linkedin size={20} />
             </a>
             <a
-              href="https://github.com/"
+              href="https://github.com/CastilloAbel"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-xl p-2.5 text-surface-400 transition-colors hover:bg-primary-50 hover:text-primary-600 dark:hover:bg-surface-800 dark:hover:text-primary-400"
