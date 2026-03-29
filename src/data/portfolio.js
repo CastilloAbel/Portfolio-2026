@@ -167,7 +167,7 @@ export const experience = {
     {
       role: 'Infrastructure & Systems Engineer',
       company: 'Empresa Metalúrgica',
-      period: '2024 — Actualidad',
+      period: '2024 — 2026',
       description:
         'Responsable de la modernización y administración de la infraestructura tecnológica, incluyendo virtualización, almacenamiento distribuido, backups, servicios internos y automatización.',
       highlights: [
@@ -195,7 +195,7 @@ export const experience = {
     {
       role: 'Infrastructure & Systems Engineer',
       company: 'Metallurgical Company',
-      period: '2024 — Present',
+      period: '2024 — 2026',
       description:
         'Responsible for modernization and administration of core infrastructure, including virtualization, distributed storage, backups, internal services and automation.',
       highlights: [
