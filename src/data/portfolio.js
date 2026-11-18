@@ -65,6 +65,16 @@ export const projects = {
       tech: ['Docker', 'Terraform', 'AWS EC2', 'GitLab CI/CD', 'Traefik'],
       images: [
         {
+          src: '/evidences/01-github.fn.png',
+          type: 'screen',
+          alt: 'Repositorio de GitHub de la aplicación FinTech Nova con el pipeline CI/CD.',
+        },
+        {
+          src: '/evidences/02-gitlab-fn.png',
+          type: 'screen',
+          alt: 'Repositorio de GitLab de la aplicación FinTech Nova con pipelines de CI/CD y resultados de análisis de seguridad.',
+        },
+        {
           src: '/evidences/04-web-tarjetas.png',
           type: 'screen',
           alt: 'Interfaz web de la aplicación FinTech Nova mostrando tarjetas de crédito y débito.',
@@ -103,12 +113,12 @@ export const projects = {
       tech: ['React', 'Python', 'SMB', 'Git'],
       images: [
         {
-          src: '/evidences/CNC-1.png',
+          src: '/evidences/CNC-2.png',
           type: 'screen',
           alt: 'Interfaz web del sistema de control de versiones CNC.',
         },
         {
-          src: '/evidences/CNC-2.png',
+          src: '/evidences/CNC-1.png',
           type: 'screen',
           alt: 'Vista de archivos y versiones del sistema CNC.',
         },
@@ -171,6 +181,13 @@ export const projects = {
       result:
         'La plataforma obtuvo tolerancia a fallos de nodo y una base más resiliente para servicios y almacenamiento.',
       tech: ['Proxmox VE', 'Ceph', 'RBD', 'CephFS', 'Linux'],
+      images: [
+        {
+          src: '/evidences/01-proxmox.png',
+          type: 'screen',
+          alt: 'Interfaz de Proxmox VE.',
+        },
+      ],
     },
     {
       title: 'Modernización de servicios e ingreso HTTPS',
@@ -198,6 +215,19 @@ export const projects = {
       result:
         'Se redujeron tareas manuales y se mejoró la detección de incidencias operativas.',
       tech: ['Bash', 'Linux', 'Proxmox Backup Server', 'Uptime Kuma'],
+      images: [
+
+        {
+          src: '/evidences/02-uptimekuma.png',
+          type: 'screen',
+          alt: 'Panel de Uptime Kuma mostrando el estado de servicios y dispositivos monitoreados.',
+        },
+        {
+          src: '/evidences/01-pbs.png',
+          type: 'screen',
+          alt: 'Interfaz de Proxmox Backup Server.',
+        },
+      ],
     },
   ],
   en: [
@@ -212,7 +242,17 @@ export const projects = {
         'Deployment time went from about 60 minutes to 22 minutes, a 63% reduction.',
       tech: ['Docker', 'Terraform', 'AWS EC2', 'GitLab CI/CD', 'Traefik'],
       images: [
-                {
+        {
+          src: '/evidences/01-github.fn.png',
+          type: 'screen',
+          alt: 'GitHub repository of the FinTech Nova application with the CI/CD pipeline.',
+        },
+        {
+          src: '/evidences/02-gitlab-fn.png',
+          type: 'screen',
+          alt: 'GitLab repository of the FinTech Nova application with CI/CD pipelines and security analysis results.',
+        },
+        {
           src: '/evidences/04-web-tarjetas.png',
           type: 'screen',
           alt: 'Web interface of the FinTech Nova application showing credit and debit cards.',
@@ -251,12 +291,12 @@ export const projects = {
       tech: ['React', 'Python', 'SMB', 'Git'],
       images: [
         {
-          src: '/evidences/CNC-1.png',
+          src: '/evidences/CNC-2.png',
           type: 'screen',
           alt: 'Web interface for the CNC version control system.',
         },
         {
-          src: '/evidences/CNC-2.png',
+          src: '/evidences/CNC-1.png',
           type: 'screen',
           alt: 'Files and version history view in the CNC system.',
         },
@@ -319,6 +359,13 @@ export const projects = {
       result:
         'The platform gained node-failure tolerance and a more resilient foundation for services and storage.',
       tech: ['Proxmox VE', 'Ceph', 'RBD', 'CephFS', 'Linux'],
+      images: [
+        {
+          src: '/evidences/01-proxmox.png',
+          type: 'screen',
+          alt: 'Proxmox VE cluster interface.',
+        },
+      ],
     },
     {
       title: 'Core services and HTTPS ingress modernization',
@@ -346,6 +393,19 @@ export const projects = {
       result:
         'Manual work was reduced and operational issues became easier to detect.',
       tech: ['Bash', 'Linux', 'Proxmox Backup Server', 'Uptime Kuma'],
+      images:[
+
+        {
+          src: '/evidences/02-uptimekuma.png',
+          type: 'screen',
+          alt: 'Uptime Kuma dashboard showing the status of monitored services and devices.',
+        },
+        {
+          src: '/evidences/01-pbs.png',
+          type: 'screen',
+          alt: 'Proxmox Backup Server interface.',
+        },
+      ],
     },
   ],
 };

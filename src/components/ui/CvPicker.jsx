@@ -20,7 +20,7 @@ const cvOptions = [
 ];
 
 export default function CvPicker({ className }) {
-  const { t } = useLang();
+  const { lang, t } = useLang();
 
   return (
     <details className="group relative inline-block text-left">
@@ -41,7 +41,7 @@ export default function CvPicker({ className }) {
                 {t(option.titleKey)}
               </h3>
               <div className="grid grid-cols-2 gap-2">
-                {option.files.map((file) => (
+                {option.files.filter((file) => file.lang === lang).map((file) => (
                   <a
                     key={file.filename}
                     href={publicAsset(`cv/${file.filename}`)}
