@@ -1,6 +1,7 @@
-import { motion } from 'framer-motion';
-import { ArrowDown, FileDown, Linkedin, Github } from 'lucide-react';
+import { motion as Motion } from 'framer-motion';
+import { ArrowDown, Linkedin, Github } from 'lucide-react';
 import { useLang } from '../../context/LangContext';
+import CvPicker from '../ui/CvPicker';
 
 export default function Hero() {
   const { t } = useLang();
@@ -11,7 +12,7 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -top-1/4 -right-1/4 h-[600px] w-[600px] rounded-full bg-primary-400/10 blur-3xl dark:bg-primary-500/5" />
         <div className="absolute -bottom-1/4 -left-1/4 h-[500px] w-[500px] rounded-full bg-primary-300/10 blur-3xl dark:bg-primary-600/5" />
-        <motion.div
+        <Motion.div
           className="absolute top-1/3 left-1/2 h-[400px] w-[400px] rounded-full bg-primary-500/5 blur-3xl"
           animate={{
             x: [0, 50, -30, 0],
@@ -26,14 +27,14 @@ export default function Hero() {
       </div>
 
       <div className="relative mx-auto max-w-6xl">
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="max-w-3xl"
         >
           {/* Badge */}
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -44,7 +45,7 @@ export default function Hero() {
               <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-500" />
             </span>
             {t('hero.title')}
-          </motion.div>
+          </Motion.div>
 
           {/* Name */}
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
@@ -55,17 +56,17 @@ export default function Hero() {
           </h1>
 
           {/* Description */}
-          <motion.p
+          <Motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
             className="mt-6 max-w-xl text-lg leading-relaxed text-surface-500 dark:text-surface-400 sm:text-xl"
           >
             {t('hero.description')}
-          </motion.p>
+          </Motion.p>
 
           {/* CTA Buttons */}
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.5 }}
@@ -78,19 +79,11 @@ export default function Hero() {
               {t('hero.cta')}
               <ArrowDown size={16} />
             </a>
-            <a
-              href="/cv.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-2xl border border-surface-200 bg-white px-6 py-3 text-sm font-semibold text-surface-700 shadow-sm transition-all hover:border-primary-300 hover:text-primary-600 dark:border-surface-700 dark:bg-surface-800 dark:text-surface-200 dark:hover:border-primary-600 dark:hover:text-primary-400"
-            >
-              <FileDown size={16} />
-              {t('hero.cv')}
-            </a>
-          </motion.div>
+            <CvPicker className="inline-flex items-center gap-2 rounded-2xl border border-surface-200 bg-white px-6 py-3 text-sm font-semibold text-surface-700 shadow-sm transition-all hover:border-primary-300 hover:text-primary-600 dark:border-surface-700 dark:bg-surface-800 dark:text-surface-200 dark:hover:border-primary-600 dark:hover:text-primary-400" />
+          </Motion.div>
 
           {/* Social Links */}
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.5 }}
@@ -114,24 +107,24 @@ export default function Hero() {
             >
               <Github size={20} />
             </a>
-          </motion.div>
-        </motion.div>
+          </Motion.div>
+        </Motion.div>
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
+      <Motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.5 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
-        <motion.div
+        <Motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         >
           <ArrowDown size={20} className="text-surface-400" />
-        </motion.div>
-      </motion.div>
+        </Motion.div>
+      </Motion.div>
     </section>
   );
 }

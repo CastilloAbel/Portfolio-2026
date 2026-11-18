@@ -1,8 +1,9 @@
-import { Mail, Linkedin, Github, FileDown } from 'lucide-react';
+import { Mail, Linkedin, Github } from 'lucide-react';
 import { useLang } from '../../context/LangContext';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
 import Reveal from '../ui/Reveal';
+import CvPicker from '../ui/CvPicker';
 
 export default function Contact() {
   const { t } = useLang();
@@ -63,15 +64,7 @@ export default function Contact() {
 
             {/* Download CV */}
             <div className="mt-6 text-center">
-              <a
-                href="/cv.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-2xl bg-primary-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary-500/25 transition-all hover:bg-primary-600 hover:shadow-xl hover:shadow-primary-500/30"
-              >
-                <FileDown size={16} />
-                {t('contact.cv')}
-              </a>
+              <CvPicker className="inline-flex items-center gap-2 rounded-2xl bg-primary-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary-500/25 transition-all hover:bg-primary-600 hover:shadow-xl hover:shadow-primary-500/30" />
             </div>
           </div>
         </div>
