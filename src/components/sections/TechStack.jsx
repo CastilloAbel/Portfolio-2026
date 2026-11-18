@@ -8,8 +8,10 @@ export default function TechStack() {
   const { t } = useLang();
 
   const categories = [
-    { key: 'infrastructure', label: 'Infrastructure & DevOps' },
-    { key: 'development', label: 'Development & Scripting' },
+    { key: 'development' },
+    { key: 'databases' },
+    { key: 'infrastructure' },
+    { key: 'devops' },
   ];
 
   return (
@@ -22,7 +24,7 @@ export default function TechStack() {
             {/* Category Title */}
             <Reveal>
               <h3 className="mb-6 text-center text-lg font-semibold text-primary-600 dark:text-primary-400">
-                {category.label}
+                {t(`stack.categories.${category.key}`)}
               </h3>
             </Reveal>
 

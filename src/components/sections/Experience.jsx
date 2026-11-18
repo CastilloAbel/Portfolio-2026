@@ -4,6 +4,7 @@ import { experience } from '../../data/portfolio';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
 import Reveal from '../ui/Reveal';
+import EvidenceGallery from '../ui/EvidenceGallery';
 
 export default function Experience() {
   const { lang, t } = useLang();
@@ -24,7 +25,7 @@ export default function Experience() {
         <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-primary-500 via-primary-300 to-transparent md:left-1/2 md:-translate-x-px" />
 
         {jobs.map((job, i) => (
-          <Reveal key={i} delay={i * 0.2} variant={i % 2 === 0 ? 'slideLeft' : 'slideRight'}>
+          <Reveal key={`${job.company}-${job.role}`} delay={i * 0.2} variant={i % 2 === 0 ? 'slideLeft' : 'slideRight'}>
             <div
               className={`relative mb-12 pl-12 md:w-1/2 md:pl-0 ${
                 i % 2 === 0
@@ -74,6 +75,8 @@ export default function Experience() {
                     </li>
                   ))}
                 </ul>
+
+                <EvidenceGallery images={job.images} />
               </div>
             </div>
           </Reveal>

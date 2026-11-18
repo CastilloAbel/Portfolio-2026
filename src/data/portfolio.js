@@ -1,36 +1,52 @@
 import {
-  Server,
-  Container,
-  Network,
-  Terminal,
-  Github,
-  Database,
-  Monitor,
-  HardDrive,
-  Code,
-  Braces,
   AppWindow,
+  Atom,
+  Blocks,
+  Braces,
+  Cloud,
+  Code,
+  Container,
+  Database,
+  GitBranch,
+  Github,
+  HardDrive,
+  Monitor,
+  Network,
+  Server,
+  Smartphone,
+  Terminal,
   UserKey,
-  Atom
+  Workflow,
 } from 'lucide-react';
 
 export const techStack = {
-  infrastructure: [
-    { name: 'Linux', icon: AppWindow, color: '#FCC624' },
-    { name: 'Proxmox', icon: Server, color: '#E57000' },
-    { name: 'Ceph', icon: HardDrive, color: '#EF3F36' },
-    { name: 'Docker', icon: Container, color: '#2496ED' },
-    { name: 'MikroTik', icon: Network, color: '#293239' },
-    { name: 'Windows Server', icon: Monitor, color: '#0078D6' },
-    { name: 'Active Directory', icon: UserKey, color: '#0078D6' },
-    { name: 'MariaDB', icon: Database, color: '#003545' },
-    { name: 'PostgreSQL', icon: Database, color: '#4169E1' },
-    { name: 'GitHub', icon: Github, color: '#181717' },
-  ],
   development: [
     { name: 'Python', icon: Code, color: '#3776AB' },
     { name: 'JavaScript', icon: Braces, color: '#F7DF1E' },
     { name: 'React', icon: Atom, color: '#61DAFB' },
+    { name: 'Node.js', icon: Server, color: '#5FA04E' },
+    { name: 'Swift', icon: Smartphone, color: '#F05138' },
+    { name: 'SQL', icon: Database, color: '#4169E1' },
+  ],
+  databases: [
+    { name: 'PostgreSQL', icon: Database, color: '#4169E1' },
+    { name: 'SQL Server', icon: Database, color: '#CC2927' },
+  ],
+  infrastructure: [
+    { name: 'Linux', icon: AppWindow, color: '#FCC624' },
+    { name: 'Proxmox', icon: Server, color: '#E57000' },
+    { name: 'Ceph', icon: HardDrive, color: '#EF3F36' },
+    { name: 'Networking', icon: Network, color: '#2563EB' },
+    { name: 'Windows Server', icon: Monitor, color: '#0078D6' },
+    { name: 'Active Directory', icon: UserKey, color: '#0078D6' },
+  ],
+  devops: [
+    { name: 'Docker / Compose', icon: Container, color: '#2496ED' },
+    { name: 'Terraform', icon: Blocks, color: '#7B42BC' },
+    { name: 'AWS', icon: Cloud, color: '#FF9900' },
+    { name: 'GitLab CI/CD', icon: Workflow, color: '#FC6D26' },
+    { name: 'Git / GitLab', icon: GitBranch, color: '#F05032' },
+    { name: 'GitHub', icon: Github, color: '#181717' },
     { name: 'Bash', icon: Terminal, color: '#4EAA25' },
   ],
 };
@@ -38,184 +54,438 @@ export const techStack = {
 export const projects = {
   es: [
     {
-      title: 'Cluster Proxmox + Ceph HA',
+      title: 'FinTech Nova',
+      repository: 'https://github.com/CastilloAbel/FintechNova',
       problem:
-        'Infraestructura sin alta disponibilidad y almacenamiento centralizado, con riesgo de downtime y corrupción de datos.',
+        'Una aplicación de microservicios necesitaba un flujo repetible y seguro para construirla, analizarla y desplegarla.',
       solution:
-        'Diseño e implementación de clúster Proxmox VE con almacenamiento distribuido Ceph (RBD para discos de VM/LXC, CephFS para datos de usuarios y bases de datos). Configuración de HA y migración en vivo.',
+        'Contenericé los servicios y preparé pipelines de GitLab CI/CD para automatizar build, análisis de seguridad y despliegue. Aprovisioné recursos en AWS EC2 con Terraform y configuré Traefik para el enrutamiento HTTPS.',
       result:
-        'Alta disponibilidad real, tolerancia a fallos de nodo y mejora significativa en rendimiento y estabilidad del almacenamiento.',
+        'El proceso de despliegue pasó de aproximadamente 60 minutos a 22 minutos, una reducción del 63%.',
+      tech: ['Docker', 'Terraform', 'AWS EC2', 'GitLab CI/CD', 'Traefik'],
+      images: [
+        {
+          src: '/evidences/01-github.fn.png',
+          type: 'screen',
+          alt: 'Repositorio de GitHub de la aplicación FinTech Nova con el pipeline CI/CD.',
+        },
+        {
+          src: '/evidences/02-gitlab-fn.png',
+          type: 'screen',
+          alt: 'Repositorio de GitLab de la aplicación FinTech Nova con pipelines de CI/CD y resultados de análisis de seguridad.',
+        },
+        {
+          src: '/evidences/04-web-tarjetas.png',
+          type: 'screen',
+          alt: 'Interfaz web de la aplicación FinTech Nova mostrando tarjetas de crédito y débito.',
+        },
+        {
+          src: '/evidences/05-web-facturas.png',
+          type: 'screen',
+          alt: 'Interfaz web de la aplicación FinTech Nova mostrando facturas y pagos pendientes.',
+        },
+        {
+          src: '/evidences/06-web-pagos.png',
+          type: 'screen',
+          alt: 'Interfaz web de la aplicación FinTech Nova mostrando opciones de pago.',
+        },
+        {
+          src: '/evidences/07-web-clientes.png',
+          type: 'screen',
+          alt: 'Interfaz web de la aplicación FinTech Nova mostrando la lista de clientes.',
+        },
+        {
+          src: '/evidences/08-web-transacciones.png',
+          type: 'screen',
+          alt: 'Interfaz web de la aplicación FinTech Nova mostrando transacciones y movimientos.',
+        },
+      ],
+    },
+    {
+      title: 'Sistema de versionado CNC',
+      repository: 'https://github.com/CastilloAbel/Git-Handler',
+      problem:
+        'Los programas CNC se distribuían mediante carpetas compartidas sin un historial claro de cambios.',
+      solution:
+        'Desarrollé una aplicación web en React y una automatización en Python para integrar los archivos compartidos por SMB con el control de versiones Git.',
+      result:
+        'Los cambios quedan trazables y los técnicos pueden consultar las versiones desde una interfaz web.',
+      tech: ['React', 'Python', 'SMB', 'Git'],
+      images: [
+        {
+          src: '/evidences/CNC-2.png',
+          type: 'screen',
+          alt: 'Interfaz web del sistema de control de versiones CNC.',
+        },
+        {
+          src: '/evidences/CNC-1.png',
+          type: 'screen',
+          alt: 'Vista de archivos y versiones del sistema CNC.',
+        },
+      ],
+    },
+    {
+      title: 'Integración de Gmail con Atajos de iOS',
+      repository: 'https://github.com/CastilloAbel/Google-Shortcuts',
+      problem:
+        'Quería integrar acciones habituales de Gmail y el historial del portapapeles con automatizaciones del iPhone.',
+      solution:
+        'Desarrollé una aplicación personal en Swift que conecta Gmail y Google Cloud con Apple Shortcuts mediante APIs REST.',
+      result:
+        'Las acciones de correo y utilidades del dispositivo se pueden reutilizar desde Atajos de Apple.',
+      tech: ['Swift', 'Google Cloud', 'APIs REST', 'Apple Shortcuts'],
+      images: [
+        {
+          src: '/evidences/GS-1.jpeg',
+          type: 'phone',
+          alt: 'Pantalla de Atajos con automatizaciones de batería, conectividad e información del dispositivo.',
+        },
+        {
+          src: '/evidences/GS-2.jpeg',
+          type: 'phone',
+          alt: 'Atajos de iOS con acciones para consultar conectividad e información del dispositivo.',
+        },
+        {
+          src: '/evidences/GS-3.jpeg',
+          type: 'phone',
+          alt: 'Configuración de Atajos con acciones personalizadas.',
+        },
+        {
+          src: '/evidences/GS-4.jpeg',
+          type: 'phone',
+          alt: 'Vista de las automatizaciones de Atajos en acción.',
+        },
+        {
+          src: '/evidences/GS-5.jpeg',
+          type: 'phone',
+          alt: 'Vista de las automatizaciones de Atajos en acción.',
+        },
+        {
+          src: '/evidences/GS-6.jpeg',
+          type: 'phone',
+          alt: 'Vista de las automatizaciones de Atajos en acción.',
+        },
+        {
+          src: '/evidences/GS-7.jpeg',
+          type: 'phone',
+          alt: 'Vista de las automatizaciones de Atajos en acción.',
+        }
+      ],
+    },
+    {
+      title: 'Clúster de alta disponibilidad Proxmox + Ceph',
+      problem:
+        'La infraestructura requería mayor disponibilidad y almacenamiento distribuido para reducir el impacto ante fallos de nodos.',
+      solution:
+        'Diseñé e implementé un clúster Proxmox VE con Ceph, alta disponibilidad, migración en vivo, RBD para discos de máquinas virtuales y CephFS para datos compartidos.',
+      result:
+        'La plataforma obtuvo tolerancia a fallos de nodo y una base más resiliente para servicios y almacenamiento.',
       tech: ['Proxmox VE', 'Ceph', 'RBD', 'CephFS', 'Linux'],
+      images: [
+        {
+          src: '/evidences/01-proxmox.png',
+          type: 'screen',
+          alt: 'Interfaz de Proxmox VE.',
+        },
+      ],
     },
     {
-      title: 'Modernización de Servicios Core (GLPI, OpenFire, UniFi, Traefik)',
+      title: 'Modernización de servicios e ingreso HTTPS',
       problem:
-        'Servicios críticos desplegados en contenedores Docker aislados, sin integración con HA ni gestión centralizada de certificados.',
+        'Varios servicios internos necesitaban un despliegue más consistente, alta disponibilidad y gestión centralizada del acceso.',
       solution:
-        'Migración de servicios a contenedores LXC dentro de Proxmox con HA. Migración de bases de datos, integración con Active Directory, implementación de Traefik como proxy inverso con wildcard certificate y unificación de infraestructura.',
+        'Participé en la migración de servicios y bases de datos a entornos virtualizados, su integración con Active Directory y la configuración de Traefik como proxy inverso.',
       result:
-        'Mejora en tiempos de respuesta, mayor resiliencia ante fallos y centralización segura de accesos mediante proxy inverso.',
-      tech: ['Proxmox', 'LXC', 'MariaDB', 'Active Directory', 'Traefik', 'Linux'],
+        'Los servicios quedaron mejor organizados y con acceso HTTPS centralizado.',
+      tech: ['Proxmox', 'LXC', 'Traefik', 'MariaDB', 'Active Directory'],
+      images: [
+        {
+          src: '/evidences/11-traefik-dashboard.png',
+          type: 'screen',
+          alt: 'Panel de Traefik mostrando routers, servicios y middlewares activos.',
+        },
+      ],
     },
     {
-      title: 'Sistema de Control de Versiones CNC',
+      title: 'Automatización de backups y monitoreo',
       problem:
-        'Falta de control centralizado de versiones para programas CNC, generando múltiples copias manuales sin trazabilidad.',
+        'Las tareas de respaldo y supervisión requerían procesos operativos más regulares y visibilidad del estado de los servicios.',
       solution:
-        'Desarrollo de sistema automatizado con script en Python que detecta cambios en carpeta Samba y realiza commit automático a repositorio GitHub. Interfaz web en React + Tailwind para visualizar estructura y versiones.',
+        'Automaticé tareas administrativas y de backup mediante scripts; también implementé monitoreo centralizado para servicios y dispositivos de infraestructura.',
       result:
-        'Trazabilidad completa de versiones CNC, eliminación de duplicados y mejora en control de cambios por parte de técnicos no desarrolladores.',
-      tech: ['Python', 'GitHub API', 'React', 'Tailwind', 'Samba', 'Linux'],
-    },
-    {
-      title: 'Automatización Integral de Backups',
-      problem:
-        'Backups manuales e inconsistentes con riesgo de pérdida de información crítica.',
-      solution:
-        'Implementación de Proxmox Backup Server con políticas automatizadas para VMs, LXC, hosts Proxmox y PCs críticas (incluyendo imágenes de disco). Configuración de retención y verificación de integridad.',
-      result:
-        'Backups automáticos diarios con deduplicación, restauración verificada y reducción significativa del riesgo operativo.',
-      tech: ['Proxmox Backup Server', 'Bash', 'Linux', 'Ceph'],
-    },
-    {
-      title: 'Servidor de Archivos Empresarial con CephFS + Samba',
-      problem:
-        'Servidor de archivos Windows con problemas de rendimiento, corrupción de archivos y alto consumo de recursos.',
-      solution:
-        'Migración a servidor Debian con Samba utilizando CephFS como backend distribuido. Integración con Active Directory para control de permisos.',
-      result:
-        'Mejora en rendimiento, reducción de consumo de recursos y eliminación de costos de licencias Windows Server.',
-      tech: ['Debian', 'Samba', 'CephFS', 'Active Directory', 'Linux'],
-    },
-    {
-      title: 'Monitoreo Centralizado con Uptime Kuma',
-      problem:
-        'Falta de visibilidad en tiempo real del estado de servicios, red y dispositivos críticos.',
-      solution:
-        'Implementación de Uptime Kuma en contenedor LXC para monitorear servidores, routers, APs, enlaces WAN y cámaras. Integración de alertas vía Discord y correo electrónico.',
-      result:
-        'Supervisión proactiva de infraestructura con notificaciones automáticas ante fallos.',
-      tech: ['Uptime Kuma', 'Proxmox', 'Linux'],
-    }
-  ],
-  en: [
-    {
-      title: 'Proxmox + Ceph HA Cluster',
-      problem:
-        'Infrastructure without high availability or centralized storage, exposing the environment to downtime and data corruption risks.',
-      solution:
-        'Design and implementation of a Proxmox VE cluster with distributed Ceph storage (RBD for VM/LXC disks and CephFS for user data and databases). HA configuration and live migration setup.',
-      result:
-        'True high availability, node failure tolerance and significant improvement in storage performance and stability.',
-      tech: ['Proxmox VE', 'Ceph', 'RBD', 'CephFS', 'Linux'],
-    },
-    {
-      title: 'Core Services Modernization (GLPI, OpenFire, UniFi, Traefik)',
-      problem:
-        'Critical services deployed in isolated Docker containers without HA integration or centralized certificate management.',
-      solution:
-        'Migration of services to LXC containers within Proxmox HA cluster. Database migration, Active Directory integration, Traefik reverse proxy implementation with wildcard certificate and infrastructure unification.',
-      result:
-        'Improved response times, enhanced resilience and secure centralized access management through reverse proxy.',
-      tech: ['Proxmox', 'LXC', 'MariaDB', 'Active Directory', 'Traefik', 'Linux'],
-    },
-    {
-      title: 'CNC Version Control System',
-      problem:
-        'Lack of centralized version control for CNC programs, resulting in duplicated files and no traceability.',
-      solution:
-        'Development of automated Python-based system detecting file changes in Samba share and committing them to GitHub repository. React + Tailwind web interface for repository structure and version visualization.',
-      result:
-        'Full version traceability, elimination of duplicate files and improved change control for non-developer technicians.',
-      tech: ['Python', 'GitHub API', 'React', 'Tailwind', 'Samba', 'Linux'],
-    },
-    {
-      title: 'Enterprise Backup Automation',
-      problem:
-        'Inconsistent manual backups with high risk of critical data loss.',
-      solution:
-        'Implementation of Proxmox Backup Server with automated policies for VMs, LXC containers, Proxmox hosts and critical workstations (including disk images). Retention and integrity verification configured.',
-      result:
-        'Automated daily backups with deduplication, verified restore capability and significant reduction of operational risk.',
-      tech: ['Proxmox Backup Server', 'Bash', 'Linux', 'Ceph'],
-    },
-    {
-      title: 'Enterprise File Server with CephFS + Samba',
-      problem:
-        'Windows file server with performance issues, file corruption and high resource consumption.',
-      solution:
-        'Migration to Debian server using Samba with CephFS distributed backend. Active Directory integration for granular permissions.',
-      result:
-        'Improved performance, reduced resource usage and elimination of Windows Server licensing costs.',
-      tech: ['Debian', 'Samba', 'CephFS', 'Active Directory', 'Linux'],
-    },
-    {
-      title: 'Centralized Monitoring with Uptime Kuma',
-      problem:
-        'Lack of real-time visibility into infrastructure services and network devices.',
-      solution:
-        'Deployment of Uptime Kuma in LXC container to monitor servers, routers, APs, WAN links and cameras. Alerting integration via Discord and email.',
-      result:
-        'Proactive infrastructure monitoring with automated failure notifications.',
-      tech: ['Uptime Kuma', 'Proxmox', 'Linux'],
-    }
-  ]
-};
+        'Se redujeron tareas manuales y se mejoró la detección de incidencias operativas.',
+      tech: ['Bash', 'Linux', 'Proxmox Backup Server', 'Uptime Kuma'],
+      images: [
 
-export const experience = {
-  es: [
-    {
-      role: 'Infrastructure & Systems Engineer',
-      company: 'Empresa Metalúrgica',
-      period: '2024 — 2026',
-      description:
-        'Responsable de la modernización y administración de la infraestructura tecnológica, incluyendo virtualización, almacenamiento distribuido, backups, servicios internos y automatización.',
-      highlights: [
-        'Diseño e implementación de clúster Proxmox + Ceph con alta disponibilidad.',
-        'Migración de servicios críticos a entorno HA con integración Active Directory.',
-        'Automatización integral de backups y monitoreo centralizado.',
-        'Desarrollo de sistema interno de control de versiones CNC.',
-      ]
-    },
-
-    {
-      role: 'IT Systems Intern',
-      company: 'Universidad Nacional de Cordoba',
-      period: '2023 — 2024',
-      description:
-        'Rol formativo orientado al soporte operativo y la administración básica de infraestructura tecnológica en un entorno educativo. Participé en tareas de red, mantenimiento de sistemas y concientización en seguridad informática, desarrollando una base sólida en operación de entornos IT institucionales.',
-      highlights: [
-        'Soporte y configuración básica de infraestructura de red en entorno educativo.',
-        'Implementación de buenas prácticas de seguridad informática mediante capacitaciones a usuarios.',
-        'Participación en mantenimiento operativo de entornos tecnológicos institucionales.',
+        {
+          src: '/evidences/02-uptimekuma.png',
+          type: 'screen',
+          alt: 'Panel de Uptime Kuma mostrando el estado de servicios y dispositivos monitoreados.',
+        },
+        {
+          src: '/evidences/01-pbs.png',
+          type: 'screen',
+          alt: 'Interfaz de Proxmox Backup Server.',
+        },
       ],
     },
   ],
   en: [
     {
-      role: 'Infrastructure & Systems Engineer',
-      company: 'Metallurgical Company',
-      period: '2024 — 2026',
-      description:
-        'Responsible for modernization and administration of core infrastructure, including virtualization, distributed storage, backups, internal services and automation.',
-      highlights: [
-        'Designed and implemented Proxmox + Ceph HA cluster.',
-        'Migrated critical services to HA environment with Active Directory integration.',
-        'Implemented full backup automation and centralized monitoring.',
-        'Developed internal CNC version control system.',
-      ]
+      title: 'FinTech Nova',
+      repository: 'https://github.com/CastilloAbel/FintechNova',
+      problem:
+        'A microservices application needed a repeatable and secure workflow to build, analyze and deploy it.',
+      solution:
+        'Containerized the services and prepared GitLab CI/CD pipelines to automate builds, security analysis and deployment. Provisioned AWS EC2 resources with Terraform and configured Traefik for HTTPS routing.',
+      result:
+        'Deployment time went from about 60 minutes to 22 minutes, a 63% reduction.',
+      tech: ['Docker', 'Terraform', 'AWS EC2', 'GitLab CI/CD', 'Traefik'],
+      images: [
+        {
+          src: '/evidences/01-github.fn.png',
+          type: 'screen',
+          alt: 'GitHub repository of the FinTech Nova application with the CI/CD pipeline.',
+        },
+        {
+          src: '/evidences/02-gitlab-fn.png',
+          type: 'screen',
+          alt: 'GitLab repository of the FinTech Nova application with CI/CD pipelines and security analysis results.',
+        },
+        {
+          src: '/evidences/04-web-tarjetas.png',
+          type: 'screen',
+          alt: 'Web interface of the FinTech Nova application showing credit and debit cards.',
+        },
+        {
+          src: '/evidences/05-web-facturas.png',
+          type: 'screen',
+          alt: 'Web interface of the FinTech Nova application showing invoices and pending payments.',
+        },
+        {
+          src: '/evidences/06-web-pagos.png',
+          type: 'screen',
+          alt: 'Web interface of the FinTech Nova application showing payment options.',
+        },
+        {
+          src: '/evidences/07-web-clientes.png',
+          type: 'screen',
+          alt: 'Web interface of the FinTech Nova application showing the list of customers.',
+        },
+        {
+          src: '/evidences/08-web-transacciones.png',
+          type: 'screen',
+          alt: 'Web interface of the FinTech Nova application showing transactions and movements.',
+        },
+      ],
     },
-
     {
-      role: 'IT Systems Intern',
-      company: 'National University of Córdoba',
-      period: '2023 — 2024',
+      title: 'CNC version control system',
+      repository: 'https://github.com/CastilloAbel/Git-Handler',
+      problem:
+        'CNC programs were distributed through shared folders without a clear change history.',
+      solution:
+        'Built a React web application and Python automation to connect SMB shared files with Git version control.',
+      result:
+        'Changes are traceable, and technicians can review versions through a web interface.',
+      tech: ['React', 'Python', 'SMB', 'Git'],
+      images: [
+        {
+          src: '/evidences/CNC-2.png',
+          type: 'screen',
+          alt: 'Web interface for the CNC version control system.',
+        },
+        {
+          src: '/evidences/CNC-1.png',
+          type: 'screen',
+          alt: 'Files and version history view in the CNC system.',
+        },
+      ],
+    },
+    {
+      title: 'Gmail integration with iOS Shortcuts',
+      repository: 'https://github.com/CastilloAbel/Google-Shortcuts',
+      problem:
+        'I wanted to connect common Gmail actions and clipboard history with iPhone automations.',
+      solution:
+        'Developed a personal Swift application that connects Gmail and Google Cloud with Apple Shortcuts through REST APIs.',
+      result:
+        'Email actions and device utilities can be reused through Apple Shortcuts.',
+      tech: ['Swift', 'Google Cloud', 'REST APIs', 'Apple Shortcuts'],
+      images: [
+        {
+          src: '/evidences/GS-1.jpeg',
+          type: 'phone',
+          alt: 'Shortcuts screen with battery, connectivity and device information automations.',
+        },
+        {
+          src: '/evidences/GS-2.jpeg',
+          type: 'phone',
+          alt: 'iOS shortcuts with actions to check connectivity and device information.',
+        },
+        {
+          src: '/evidences/GS-3.jpeg',
+          type: 'phone',
+          alt: 'Shortcuts configuration with custom actions.',
+        },
+        {
+          src: '/evidences/GS-4.jpeg',
+          type: 'phone',
+          alt: 'Shortcuts screen showing active automations.',
+        },
+        {
+          src: '/evidences/GS-5.jpeg',
+          type: 'phone',
+          alt: 'Shortcuts screen showing active automations.',
+        },
+        {
+          src: '/evidences/GS-6.jpeg',
+          type: 'phone',
+          alt: 'Shortcuts screen showing active automations.',
+        },
+        {
+          src: '/evidences/GS-7.jpeg',
+          type: 'phone',
+          alt: 'Shortcuts screen showing active automations.',
+        },
+      ],
+    },
+    {
+      title: 'Proxmox + Ceph high-availability cluster',
+      problem:
+        'The infrastructure needed higher availability and distributed storage to reduce the impact of node failures.',
+      solution:
+        'Designed and implemented a Proxmox VE cluster with Ceph, high availability, live migration, RBD for virtual machine disks and CephFS for shared data.',
+      result:
+        'The platform gained node-failure tolerance and a more resilient foundation for services and storage.',
+      tech: ['Proxmox VE', 'Ceph', 'RBD', 'CephFS', 'Linux'],
+      images: [
+        {
+          src: '/evidences/01-proxmox.png',
+          type: 'screen',
+          alt: 'Proxmox VE cluster interface.',
+        },
+      ],
+    },
+    {
+      title: 'Core services and HTTPS ingress modernization',
+      problem:
+        'Several internal services needed more consistent deployment, high availability and centralized access management.',
+      solution:
+        'Contributed to migrating services and databases to virtualized environments, integrating Active Directory and configuring Traefik as a reverse proxy.',
+      result:
+        'Services became better organized with centralized HTTPS access.',
+      tech: ['Proxmox', 'LXC', 'Traefik', 'MariaDB', 'Active Directory'],
+      images: [
+        {
+          src: '/evidences/11-traefik-dashboard.png',
+          type: 'screen',
+          alt: 'Traefik dashboard showing active routers, services and middlewares.',
+        },
+      ],
+    },
+    {
+      title: 'Backup automation and monitoring',
+      problem:
+        'Backup and monitoring tasks needed more regular processes and better visibility into service health.',
+      solution:
+        'Automated administrative and backup tasks with scripts and implemented centralized monitoring for infrastructure services and devices.',
+      result:
+        'Manual work was reduced and operational issues became easier to detect.',
+      tech: ['Bash', 'Linux', 'Proxmox Backup Server', 'Uptime Kuma'],
+      images:[
+
+        {
+          src: '/evidences/02-uptimekuma.png',
+          type: 'screen',
+          alt: 'Uptime Kuma dashboard showing the status of monitored services and devices.',
+        },
+        {
+          src: '/evidences/01-pbs.png',
+          type: 'screen',
+          alt: 'Proxmox Backup Server interface.',
+        },
+      ],
+    },
+  ],
+};
+
+export const experience = {
+  es: [
+    {
+      role: 'Desarrollador de Software',
+      company: 'Eclypsium',
+      period: 'Junio 2026 — Septiembre 2026',
       description:
-        'Entry-level role focused on operational IT support and foundational infrastructure administration within an educational institution. Gained hands-on experience in network tasks, system maintenance, and cybersecurity awareness initiatives, building a strong technical foundation in institutional IT environments.',
+        'Me incorporé a un equipo ágil para contribuir al desarrollo y mejora de herramientas de software orientadas a la ciberseguridad.',
       highlights: [
-        'Assisted in basic network infrastructure configuration within an educational environment.',
-        'Delivered security awareness training and promoted cybersecurity best practices among users.',
-        'Contributed to the operational maintenance of institutional IT systems.',
+        'Colaboré en el desarrollo de herramientas de seguridad.',
+        'Trabajé en equipo en un entorno de desarrollo ágil.',
+        'Apliqué mi experiencia previa en sistemas e infraestructura al desarrollo de software.',
+      ],
+    },
+    {
+      role: 'SysAdmin / Administrador de Infraestructura',
+      company: 'Sohipren S.A.',
+      period: 'Octubre 2024 — Marzo 2026',
+      description:
+        'Administré y modernicé infraestructura para sistemas en producción. En esta etapa profundicé en scripting, desarrollo de herramientas internas y despliegue de aplicaciones.',
+      highlights: [
+        'Implementé infraestructura de alta disponibilidad con Proxmox y Ceph.',
+        'Automaticé procesos operativos, backups y tareas administrativas mediante scripts.',
+        'Participé en el despliegue de servicios, configuración de HTTPS y mejoras de CI/CD.',
+        'Desarrollé herramientas internas, incluido el sistema de versionado CNC.',
+      ],
+    },
+    {
+      role: 'Soporte Técnico de IT',
+      company: 'Universidad Nacional de Córdoba',
+      period: 'Abril 2023 — Octubre 2024',
+      description:
+        'Comencé mi recorrido profesional en soporte técnico, atendiendo a usuarios y colaborando en el mantenimiento de sistemas institucionales.',
+      highlights: [
+        'Resolví incidencias y brindé soporte a usuarios institucionales.',
+        'Realicé mantenimiento de equipos y sistemas.',
+        'Construí una base práctica en operación de servicios y resolución analítica de problemas.',
+      ],
+    },
+  ],
+  en: [
+    {
+      role: 'Software Developer',
+      company: 'Eclypsium',
+      period: 'June 2026 — September 2026',
+      description:
+        'Joined an agile team to contribute to the development and improvement of cybersecurity software tools.',
+      highlights: [
+        'Contributed to the development of security tools.',
+        'Collaborated with a team in an agile development environment.',
+        'Applied my prior systems and infrastructure experience to software development.',
+      ],
+    },
+    {
+      role: 'SysAdmin / Infrastructure Administrator',
+      company: 'Sohipren S.A.',
+      period: 'October 2024 — March 2026',
+      description:
+        'Administered and modernized infrastructure supporting production systems. During this role I deepened my scripting skills, built internal tools and deployed applications.',
+      highlights: [
+        'Implemented high-availability infrastructure with Proxmox and Ceph.',
+        'Automated operational processes, backups and administrative tasks with scripts.',
+        'Contributed to service deployments, HTTPS configuration and CI/CD improvements.',
+        'Built internal tools, including the CNC version control system.',
+      ],
+    },
+    {
+      role: 'IT Support Technician',
+      company: 'National University of Córdoba',
+      period: 'April 2023 — October 2024',
+      description:
+        'Started my professional path in technical support, assisting users and helping maintain institutional systems.',
+      highlights: [
+        'Resolved incidents and provided support to institutional users.',
+        'Maintained equipment and systems.',
+        'Built a practical foundation in service operations and analytical problem-solving.',
       ],
     },
   ],
@@ -226,16 +496,30 @@ export const education = {
     {
       degree: 'Ingeniería en Sistemas de Información',
       institution: 'Universidad Tecnológica Nacional',
-      period: '2021 — Actualidad',
+      period: '2021 — 2027 (estimado)',
       status: 'current',
-      year: '5° Año (último año)',
+      year: 'En curso',
       description:
-        'Formación integral en desarrollo de software, arquitectura de sistemas, redes, bases de datos y gestión de proyectos tecnológicos. Enfoque en infraestructura y sistemas distribuidos.',
+        'Formación en desarrollo de software, arquitectura de sistemas, redes, bases de datos y gestión de proyectos tecnológicos.',
       highlights: [
-        'Arquitectura de sistemas y diseño de software',
-        'Redes de datos y telecomunicaciones',
-        'Bases de datos relacionales y no relacionales',
+        'Desarrollo y diseño de software',
+        'Redes y sistemas distribuidos',
+        'Bases de datos',
         'Gestión de proyectos de TI',
+      ],
+    },
+    {
+      degree: 'Licenciatura en Matemática Aplicada',
+      institution: 'Universidad Nacional de Córdoba — FAMAF',
+      period: '2026 — 2030 (estimado)',
+      status: 'current',
+      year: 'En curso',
+      description:
+        'Comencé esta carrera por interés personal y pasión por las matematicas como un espacio de aprendizaje que disfruto.',
+      highlights: [
+        'Pensamiento matemático',
+        'Análisis y resolución de problemas',
+        'Interés académico personal',
       ],
     },
     {
@@ -243,31 +527,44 @@ export const education = {
       institution: 'Escuela Técnica de Nivel Medio',
       period: '2013 — 2020',
       status: 'completed',
-      year: 'Título de nivel medio',
+      year: 'Completado',
       description:
-        'Formación técnica en electrónica que proporcionó conocimientos sólidos de hardware, circuitos y sistemas embebidos. Esta base técnica fue clave para implementar soluciones con Raspberry Pi, entender la infraestructura a nivel físico y diagnosticar problemas de hardware en entornos de producción.',
+        'Formación técnica en electrónica, hardware y sistemas, una base útil para comprender la infraestructura desde el nivel físico.',
       highlights: [
-        'Implementación de servicios sobre Raspberry Pi',
-        'Conocimientos avanzados de hardware',
         'Electrónica digital y analógica',
-        'Diagnóstico y resolución a nivel físico',
+        'Hardware y diagnóstico',
+        'Sistemas embebidos',
       ],
     },
   ],
   en: [
     {
       degree: 'Information Systems Engineering',
-      institution: 'National Technological University',
-      period: '2021 — Present',
+      institution: 'National Technological University (UTN)',
+      period: '2021 — 2027 (expected)',
       status: 'current',
-      year: '5th Year (final year)',
+      year: 'In progress',
       description:
-        'Comprehensive training in software development, systems architecture, networking, databases and technology project management. Focus on infrastructure and distributed systems.',
+        'Studies in software development, systems architecture, networking, databases and technology project management.',
       highlights: [
-        'Systems architecture and software design',
-        'Data networks and telecommunications',
-        'Relational and non-relational databases',
+        'Software development and design',
+        'Networking and distributed systems',
+        'Databases',
         'IT project management',
+      ],
+    },
+    {
+      degree: 'Applied Mathematics',
+      institution: 'National University of Córdoba — FAMAF',
+      period: '2026 — 2030 (expected)',
+      status: 'current',
+      year: 'In progress',
+      description:
+        'I started this degree out of personal interest and passion with mathematics, and as a field of study I genuinely enjoy.',
+      highlights: [
+        'Mathematical thinking',
+        'Analysis and problem-solving',
+        'Personal academic interest',
       ],
     },
     {
@@ -275,14 +572,13 @@ export const education = {
       institution: 'Technical High School',
       period: '2013 — 2020',
       status: 'completed',
-      year: 'High school diploma',
+      year: 'Completed',
       description:
-        'Technical training in electronics that provided solid knowledge of hardware, circuits and embedded systems. This technical foundation was key to implementing solutions with Raspberry Pi, understanding infrastructure at the physical level and diagnosing hardware issues in production environments.',
+        'Technical education in electronics, hardware and systems, providing a useful foundation for understanding infrastructure at the physical level.',
       highlights: [
-        'Service deployment on Raspberry Pi',
-        'Advanced hardware knowledge',
         'Digital and analog electronics',
-        'Physical-level diagnosis and troubleshooting',
+        'Hardware and troubleshooting',
+        'Embedded systems',
       ],
     },
   ],
